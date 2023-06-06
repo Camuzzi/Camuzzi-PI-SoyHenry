@@ -2,15 +2,13 @@ const { Router } = require('express');
 
 const videogamesRouter = Router();
 
-videogamesRouter.get('/',(req,res)=>{
-    res.status(200).send("Acá se muestran todos los juegos");
-});
+videogamesRouter.get('/',allVideogames);
 
 videogamesRouter.get('/:idVideogame',(req,res)=>{
     res.status(200).send("Acá se muesta el detalle de un videojuego");
 });
 
-videogamesRouter.get('/name?',(req,res)=>{
+videogamesRouter.get('/name',(req,res)=>{
     res.status(200).send("Acá se muestran las concidencias");
 });
 
