@@ -1,8 +1,9 @@
 const { Router } = require('express');
+const {getVideogamesHandler} = require("../handlers/videogamesHandler")
 
 const videogamesRouter = Router();
 
-videogamesRouter.get('/',allVideogames);
+videogamesRouter.get('/',getVideogamesHandler);
 
 videogamesRouter.get('/:idVideogame',(req,res)=>{
     res.status(200).send("Acá se muesta el detalle de un videojuego");
