@@ -9,7 +9,7 @@ const {Videogame} = require("../../db");
 const getVideogameByName = async (name) => {
     let apiVideogames = (await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`)).data.results;
 
-    apiVideogames = filterVideogames(apiVideogames);
+    apiVideogames = filterVideogames(apiVideogames,"api");
 
     let bddVideogames = await Videogame.findAll({
         where: {

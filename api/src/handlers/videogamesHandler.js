@@ -1,5 +1,6 @@
 const {getAllVideogames} = require("../controllers/videogamesControllers/getAllVideogames");
 const {getVideogameByName} = require("../controllers/videogamesControllers/getByName");
+const {getById} = require("../controllers/videogamesControllers/getById");
 
 const getVideogamesHandler = async (req,res) => {
     const {name} = req.query;
@@ -25,13 +26,18 @@ const getVideogamesHandler = async (req,res) => {
     }
 }
 
-// const getVideogameById = async (req,res) => {
-//     try {
-        
-//     } catch (error) {
-//         res.status(400).json({error: error.message}) 
-//     }
-// }
+const getVideogameById = async (req,res) => {
+    const {idVideogame} = req.params;
+
+    const idSource = isNaN(idVideogame) ? "bdd" : "api";
+    
+    try {
+        const idResult = await getById(idVideogame,idSource);
+        res.status(200).json(idResult);
+    } catch (error) {
+        res.status(400).json({error: error.message}) 
+    }
+}
 
 
 // const createNewGame = async (req,res) => {
@@ -42,4 +48,4 @@ const getVideogamesHandler = async (req,res) => {
 //     }
 // }
 
-module.exports = {getVideogamesHandler};
+module.exports = {getVideogamesHandler,getVideogameById};

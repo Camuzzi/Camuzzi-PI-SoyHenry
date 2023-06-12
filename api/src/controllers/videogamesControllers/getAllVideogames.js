@@ -19,7 +19,7 @@ const getAllVideogames = async () => {
     }
 
 
-    apiVideogames = filterVideogames(apiVideogames);
+    apiVideogames = filterVideogames(apiVideogames,"api");
 
     const bddVideogames = await Videogame.findAll();
 
