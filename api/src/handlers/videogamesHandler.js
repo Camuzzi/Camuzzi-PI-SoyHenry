@@ -1,6 +1,7 @@
 const {getAllVideogames} = require("../controllers/videogamesControllers/getAllVideogames");
 const {getVideogameByName} = require("../controllers/videogamesControllers/getByName");
 const {getById} = require("../controllers/videogamesControllers/getById");
+const {createGame} = require("../controllers/videogamesControllers/createGame");
 
 const getVideogamesHandler = async (req,res) => {
     const {name} = req.query;
@@ -26,7 +27,7 @@ const getVideogamesHandler = async (req,res) => {
     }
 }
 
-const getVideogameById = async (req,res) => {
+const getVideogameByIdHandler = async (req,res) => {
     const {idVideogame} = req.params;
 
     const idSource = isNaN(idVideogame) ? "bdd" : "api";
@@ -40,12 +41,16 @@ const getVideogameById = async (req,res) => {
 }
 
 
-// const createNewGame = async (req,res) => {
-//     try {
-        
-//     } catch (error) {
-//         res.status(400).json({error: error.message}) 
-//     }
-// }
+const createNewGameHandler = async (req,res) => {
+    const {name,description,platforms,image,releaseDate,rating,genres} = req.body;
 
-module.exports = {getVideogamesHandler,getVideogameById};
+    try {
+        const newGame = await createGame(name,description,platforms,image,releaseDate,rating,genres)
+        res.status(201).json({ message: "Videogame created successfully!"})
+       
+    } catch (error) {
+        res.status(400).json({error: error.message}) 
+    }
+}
+
+module.exports = {getVideogamesHandler,getVideogameByIdHandler,createNewGameHandler};
