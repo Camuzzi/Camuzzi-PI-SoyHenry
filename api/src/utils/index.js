@@ -72,4 +72,13 @@ const filterVideogames = (info,source) => {
 
 };
 
-module.exports = {filterVideogames};
+const filterGenres = (data) => {
+    return data.map( (element) => {
+        return {
+            id: element.id,
+            name: element.name
+        }
+    })
+}
+
+module.exports = {filterVideogames,filterGenres};
