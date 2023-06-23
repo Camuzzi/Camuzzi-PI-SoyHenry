@@ -1,8 +1,8 @@
-import styles from './landing.module.css';
+import "./landing.styles.css"
 
 function Landing() {
   return (
-    <div className="App">
+    <div className="landing-style">
       <h1>Landing</h1>
     </div>
   );

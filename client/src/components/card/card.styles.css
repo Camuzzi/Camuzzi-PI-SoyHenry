@@ -1,0 +1,27 @@
+.all-cards {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.116);
+    border: 1px solid rgba(255, 0, 0, 0.315);
+    border-radius: 5px;
+    padding: 25px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+}
+
+.all-cards:hover {
+    transform: scale(1.05);
+}
+
+.car-img {
+    position: absolute;
+    object-fit: cover;
+    width: 20%;
+    height: 20%;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+}
